@@ -1,0 +1,25 @@
+//Google Font
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100vh;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    background: #1a1a1a
+}
+
+body a{
+    color: white;
+    text-decoration: none;
+}

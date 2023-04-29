@@ -1,0 +1,34 @@
+#app{
+    display: flex;
+    justify-content: center;
+}
+
+#container{
+    width: 90vw;
+    padding-top: 2em;
+}
+
+#top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+
+    #theme-select {
+        display: flex;
+        align-items: center;
+    }
+
+    #theme{
+        background-color: #111111;
+        color: white;
+        border-radius: 0.5em;
+        padding: 0.2em;
+        border: 0.15em solid #333333;
+    }
+}
+
+.widget{
+    background-color:#333333;
+    padding: 1.5em;
+    border-radius: 1em;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { fiveDay } from './testdata';
+import './weather.css';
 
 const Weather = (props) => {
     const [forcast, setForcast] = useState(fiveDay);
@@ -9,19 +10,21 @@ const Weather = (props) => {
         const fourDays = [];
         for (let i = 1; i < 5; i++) {
             fourDays.push(
-                <div id={`day${i + 1}`} key={i}>
-                    <div className="weather-date">{forcast.DailyForecasts[i].Date.slice(0, 10)}</div>
-                    <div className="weather-detail">{forcast.DailyForecasts[i].Day.IconPhrase}</div>
-                    <div className="weather-temps">
-                        <div className="high">
-                            <p>High:</p>
-                            {forcast.DailyForecasts[i].Temperature.Maximum.Value}
-                            {forcast.DailyForecasts[i].Temperature.Maximum.Unit}
-                        </div>
-                        <div className="low">
-                            <p>Low:</p>
-                            {forcast.DailyForecasts[i].Temperature.Minimum.Value}
-                            {forcast.DailyForecasts[i].Temperature.Minimum.Unit}
+                <div id={`day${i + 1}`} className="next-day" key={i}>
+                    <div className="weather-date">
+                        <h4>{forcast.DailyForecasts[i].Date.slice(5, 10)}</h4>
+                    </div>
+                    <div className="weather-detail">
+                        <div className="weather-note">{forcast.DailyForecasts[i].Day.IconPhrase}</div>
+                        <div className="weather-temps">
+                            <div className="high">
+                                {forcast.DailyForecasts[i].Temperature.Maximum.Value}
+                                {forcast.DailyForecasts[i].Temperature.Maximum.Unit}
+                            </div>
+                            <div className="low">
+                                {forcast.DailyForecasts[i].Temperature.Minimum.Value}
+                                {forcast.DailyForecasts[i].Temperature.Minimum.Unit}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -31,28 +34,35 @@ const Weather = (props) => {
     }
 
     return (
-        <div id="weather">
-            <a href={forcast.Headline.Link} target="blank">
-                <div id="day1">
-                    <div className="weather-location">Orlando, FL</div>
-                    <div className="weather-date"> {forcast.Headline.EffectiveDate.slice(0, 10)} </div>
-                    <div className="weather-detail">{forcast.Headline.Text}</div>
-                    <div className="weather-temps">
-                        <div className="high">
-                            <p>High:</p>
-                            {forcast.DailyForecasts[0].Temperature.Maximum.Value}
-                            {forcast.DailyForecasts[0].Temperature.Maximum.Unit}
-                        </div>
-                        <div className="low">
-                            <p>Low:</p>
-                            {forcast.DailyForecasts[0].Temperature.Minimum.Value}
-                            {forcast.DailyForecasts[0].Temperature.Minimum.Unit}
+        <div id="weather" className="widget">
+            {/* <a href={forcast.Headline.Link} target="blank"> */}
+            <h2 className="widget-name">Weather</h2>
+            <div id="day1" className="current-day">
+                <div className="weather-location">
+                    <h3>Orlando,FL</h3>
+                </div>
+                <div className="weather-div">
+                    <div className="weather-date">
+                        <h4>Today</h4>
+                    </div>
+                    <div className="weather-detail">
+                        <div className="weather-note">{forcast.Headline.Text}</div>
+                        <div className="weather-temps">
+                            <div className="high">
+                                {forcast.DailyForecasts[0].Temperature.Maximum.Value}
+                                {forcast.DailyForecasts[0].Temperature.Maximum.Unit}
+                            </div>
+                            <div className="low">
+                                {forcast.DailyForecasts[0].Temperature.Minimum.Value}
+                                {forcast.DailyForecasts[0].Temperature.Minimum.Unit}
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="next-days">{finishForcast()}</div>
 
-                {finishForcast()}
-            </a>
+            {/* </a> */}
         </div>
     );
 };
