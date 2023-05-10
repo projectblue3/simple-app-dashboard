@@ -18,8 +18,13 @@ function App() {
                         <h1>Simple App Dashboard</h1>
                     </div>
                     <div id="theme-select">
-                        <select name="theme" id="theme" onChange={(e) => setTheme(e.target.value)}>
-                            <option value="" disabled selected hidden>
+                        <select
+                            name="theme"
+                            id="theme"
+                            onChange={(e) => setTheme(e.target.value)}
+                            defaultValue={'Change Theme'}
+                        >
+                            <option value="Change Theme" disabled hidden>
                                 Change Theme
                             </option>
                             {themes.map((theme) => {

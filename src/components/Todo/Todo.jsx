@@ -1,19 +1,59 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Todo = (props) => {
     const [todos, setTodos] = useState([]);
     const [inputText, setInputText] = useState('');
+    const [todoToDelete, setTodoToDelete] = useState();
 
-    const postHandler = async (e) => {
+    const postHandler = (e) => {
         e.preventDefault();
 
-        todos.push(inputText);
+        setTodos([...todos, { id: uuidv4(), text: inputText, completion: false }]);
+
+        setInputText('');
+    };
+
+    const completionHandler = (todoId) => {
+        const todoIndex = todos.map((todo) => todo.id).indexOf(todoId);
+
+        if (todos[todoIndex].completion === false) {
+            todos[todoIndex].completion = true;
+        } else {
+            todos[todoIndex].completion = false;
+        }
+
+        console.log(todos[todoIndex]);
+    };
+
+    const deleteHandler = (todoId) => {
+        let tempArr = [...todos];
+
+        tempArr = tempArr.filter((todo) => todo.id !== todoId);
+
+        setTodos([...tempArr]);
     };
 
     return (
         <div id="todo" className="widget">
             <h2 className="widget-name">Todo</h2>
-            <div id="todo-list"></div>
+            <div id="todo-list">
+                {todos.map((todo) => {
+                    return (
+                        <div className="list-item" key={todo.id}>
+                            <p>{todo.text}</p>
+                            <input
+                                type="checkbox"
+                                id="todo-completion"
+                                name="todo-completion"
+                                value={todo.completion}
+                                onClick={() => completionHandler(todo.id)}
+                            ></input>
+                            <button onClick={() => deleteHandler(todo.id)}>X</button>
+                        </div>
+                    );
+                })}
+            </div>
             <div id="todo-input">
                 <form onSubmit={postHandler} className="input-form">
                     <input
@@ -25,6 +65,10 @@ const Todo = (props) => {
                         onChange={(e) => setInputText(e.target.value)}
                         value={inputText}
                     />
+
+                    <button type="submit" className="submit-btn" tabIndex={6}>
+                        Submit
+                    </button>
                 </form>
             </div>
         </div>
