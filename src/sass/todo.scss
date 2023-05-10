@@ -1,0 +1,67 @@
+#todo{
+    width: 15vw;
+}
+
+.input-form{
+    background: #111111;
+    border-radius: 0.5em;
+    border: 0.15em solid #676767;
+}
+
+.form-text-box{
+    background: transparent;
+    border: none;
+    width: 80%;
+    padding: 0 1em;
+    color: white;
+}
+
+.submit-btn{
+    background: transparent;
+    border: none;
+    color: white;
+    width: 20%;
+}
+
+.submit-btn:hover{
+    cursor: pointer;
+}
+
+#todo-list{
+    list-style-type: none;
+}
+
+.todo-list-item{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+.todo-list-item p{
+    margin-right: 0.5em;
+}
+
+.todo-list-item input[type="checkbox"]{
+    margin-right: 0.5em;    
+}
+
+.todo-list-item input[type="checkbox"]:hover{
+    cursor: pointer;
+}
+
+.todo-list-item::before{
+    content:"-" ;
+    padding-right: 0.5em;
+}
+
+.todo-list-item button{
+    background: #111111;
+    color: White;
+    border-radius: 0.2em;
+    border: 0.15em solid #676767;
+}
+
+.todo-list-item button:hover{
+    cursor: pointer;
+}

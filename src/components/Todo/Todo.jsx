@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import './todo.css';
 
 const Todo = (props) => {
     const [todos, setTodos] = useState([]);
@@ -37,23 +38,23 @@ const Todo = (props) => {
     return (
         <div id="todo" className="widget">
             <h2 className="widget-name">Todo</h2>
-            <div id="todo-list">
+            <ul id="todo-list">
                 {todos.map((todo) => {
                     return (
-                        <div className="list-item" key={todo.id}>
+                        <li className="todo-list-item" key={todo.id}>
                             <p>{todo.text}</p>
                             <input
                                 type="checkbox"
-                                id="todo-completion"
+                                className="todo-completion"
                                 name="todo-completion"
                                 value={todo.completion}
                                 onClick={() => completionHandler(todo.id)}
                             ></input>
                             <button onClick={() => deleteHandler(todo.id)}>X</button>
-                        </div>
+                        </li>
                     );
                 })}
-            </div>
+            </ul>
             <div id="todo-input">
                 <form onSubmit={postHandler} className="input-form">
                     <input
@@ -67,7 +68,7 @@ const Todo = (props) => {
                     />
 
                     <button type="submit" className="submit-btn" tabIndex={6}>
-                        Submit
+                        O
                     </button>
                 </form>
             </div>

@@ -27,6 +27,11 @@
     }
 }
 
+#widgets{
+    display: flex;
+    gap: 1em;
+}
+
 .widget{
     background-color:#333333;
     padding: 1.5em;
