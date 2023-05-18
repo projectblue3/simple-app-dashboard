@@ -1,6 +1,7 @@
 #app{
     display: flex;
     justify-content: center;
+    height: 100vh;
 }
 
 #container{
@@ -19,11 +20,9 @@
     }
 
     #theme{
-        background-color: #111111;
-        color: white;
         border-radius: 0.5em;
         padding: 0.2em;
-        border: 0.15em solid #333333;
+        
     }
 }
 
@@ -34,7 +33,84 @@
 }
 
 .widget{
-    background-color:#333333;
     padding: 1.5em;
     border-radius: 1em;
+}
+
+
+#app.dark-theme {
+        background: #1a1a1a;
+        color: white;
+
+        a{
+            color: white;
+        }
+
+        #theme{
+            background-color: #111111;
+            color: white;
+            border: 0.15em solid #333333;
+        }
+
+        .widget{
+            background-color:#333333;
+        }
+
+        .news-list-item a:hover{
+            color: pink;
+        }
+
+        .input-form{
+            background: #111111;
+            border: 0.15em solid #676767;
+        }
+
+        .form-text-box{
+            color: white;
+        }
+
+        .submit-btn{
+            color: white;
+        }
+
+        .todo-list-item button{
+            background: #111111;
+            color: White;
+            border: 0.15em solid #676767;
+        }
+}
+
+#app.light-theme{
+        background: #f3f3f3;
+        color: #444444;
+
+        a{
+            color: #444444;
+        }
+
+        #theme{
+            background-color: #fff;
+            color: #444444;
+            border: 0.15em solid #9d9d9d;
+        }
+
+        .widget{
+            background: #ffffff;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+
+        .news-list-item a:hover{
+            color: pink;
+        }
+
+        .input-form{
+            background: #f3f3f3;
+            border: 0.15em solid #9d9d9d;
+        }
+
+        .todo-list-item button{
+            background: #111111;
+            color: White;
+            border: 0.15em solid #676767;
+        }
 }

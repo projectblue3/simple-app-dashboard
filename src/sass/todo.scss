@@ -1,11 +1,9 @@
 #todo{
-    min-width: 20vw;
+    min-width: 15vw;
 }
 
 .input-form{
-    background: #111111;
     border-radius: 0.5em;
-    border: 0.15em solid #676767;
 }
 
 .form-text-box{
@@ -13,13 +11,11 @@
     border: none;
     width: 80%;
     padding: 0 1em;
-    color: white;
 }
 
 .submit-btn{
     background: transparent;
     border: none;
-    color: white;
     width: 20%;
 }
 
@@ -56,10 +52,9 @@
 }
 
 .todo-list-item button{
-    background: #111111;
-    color: White;
+    
     border-radius: 0.2em;
-    border: 0.15em solid #676767;
+    
 }
 
 .todo-list-item button:hover{
