@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import reactLogo from './assets/react.svg';
+import Cookies from 'js-cookie';
 import viteLogo from '/vite.svg';
 import './app.css';
 
@@ -9,6 +10,21 @@ function App() {
     const [count, setCount] = useState(0);
     const [theme, setTheme] = useState('dark-theme');
     const [themes, setThemes] = useState(['dark-theme', 'light-theme']);
+
+    useEffect(() => {
+        let themeCookie = Cookies.get('theme-cookie');
+
+        if (!themeCookie) {
+            Cookies.set('theme-cookie', theme);
+        }
+
+        setTheme(themeCookie);
+    }, []);
+
+    const cookieHandler = (themeChosen) => {
+        setTheme(themeChosen);
+        Cookies.set('theme-cookie', themeChosen);
+    };
 
     return (
         <div id="app" className={theme}>
@@ -21,7 +37,7 @@ function App() {
                         <select
                             name="theme"
                             id="theme"
-                            onChange={(e) => setTheme(e.target.value)}
+                            onChange={(e) => cookieHandler(e.target.value)}
                             defaultValue={'Change Theme'}
                         >
                             <option value="Change Theme" disabled hidden>
